@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AccesoADatos.Models.Cita>
+@{
+    ViewData["Title"] = "Reservas administrativas - Ver citas";
+    var servicioId = ViewBag.ServicioId as int?;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 m-0">Reservas administrativas</h1>
+    <form method="get" class="d-flex gap-2">
+        <input type="number" min="1" class="form-control" name="servicioId" value="@servicioId" placeholder="Filtrar por ServicioId" />
+        <button class="btn btn-outline-primary" type="submit">Filtrar</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Limpiar</a>
+    </form>
+</div>
+
+<div class="card shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre de Persona</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Identificación</th>
+                    <th class="text-end">Monto total</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Fecha cita</th>
+                    <th>Fecha de registro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.NombreDeLaPersona</td>
+                        <td>@c.Telefono</td>
+                        <td>@c.Correo</td>
+                        <td>@c.Identificacion</td>
+                        <td class="text-end">@c.MontoTotal.ToString("C2")</td>
+                        <td>@c.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+                        <td>@c.FechaDeLaCita.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@c.FechaDeRegistro.ToString("yyyy-MM-dd HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

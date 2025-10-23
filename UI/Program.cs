@@ -16,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
+builder.Services.AddScoped<IReservaAdminRepository, ReservaAdminRepository>();
+builder.Services.AddScoped<IReservaAdminService, ReservaAdminService>();
 
 var app = builder.Build();
 

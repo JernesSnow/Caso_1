@@ -11,6 +11,7 @@ namespace AccesoADatos.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Servicio> Servicios => Set<Servicio>();
+        public DbSet<Cita> Citas => Set<Cita>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
