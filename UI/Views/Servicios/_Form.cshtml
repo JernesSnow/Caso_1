@@ -1,0 +1,54 @@
+﻿@model UI.Models.ServicioCreateVm
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Descripcion" class="form-label"></label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Monto" class="form-label"></label>
+        <div class="input-group">
+            <span class="input-group-text">₡</span>
+            <input asp-for="Monto" class="form-control text-end" />
+        </div>
+        <span asp-validation-for="Monto" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="IVA" class="form-label"></label>
+        <div class="input-group">
+            <span class="input-group-text">₡</span>
+            <input asp-for="IVA" class="form-control text-end" />
+        </div>
+        <span asp-validation-for="IVA" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Especialidad" class="form-label"></label>
+        <select asp-for="Especialidad" class="form-select">
+            <option value="1">Medicina general</option>
+            <option value="2">Imagenología</option>
+            <option value="3">Microbiología</option>
+        </select>
+        <span asp-validation-for="Especialidad" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Especialista" class="form-label"></label>
+        <input asp-for="Especialista" class="form-control" />
+        <span asp-validation-for="Especialista" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="Clinica" class="form-label"></label>
+        <input asp-for="Clinica" class="form-control" />
+        <span asp-validation-for="Clinica" class="text-danger"></span>
+    </div>
+    <div class="col-md-2 d-flex align-items-center">
+        <div class="form-check mt-4">
+            <input asp-for="Estado" class="form-check-input" />
+            <label asp-for="Estado" class="form-check-label">Activo</label>
+        </div>
+    </div>
+</div>
