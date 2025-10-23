@@ -1,0 +1,61 @@
+@model IEnumerable<AccesoADatos.Models.Servicio>
+    @{
+    ViewBag.Title = "Servicios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2 class="mt-4">Gestión de Servicios</h2>
+
+    @if (TempData["ok"] != null)
+{
+    <div class="alert alert-success">@TempData["ok"]</div>
+}
+
+    <div class="mb-3">
+        <a class="btn btn-primary" asp-action="Create">? Nuevo Servicio</a>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Monto</th>
+                <th>IVA</th>
+                <th>Especialidad</th>
+                <th>Especialista</th>
+                <th>Clínica</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Nombre</td>
+                <td>@s.Descripcion</td>
+                <td>?@s.Monto</td>
+                <td>@s.IVA%</td>
+                <td>
+                    @{
+                        string especialidad = s.Especialidad switch
+                        {
+                            1 => "Medicina general",
+                            2 => "Imagenología",
+                            3 => "Microbiología",
+                            _ => "Desconocida"
+                        };
+                    }
+                    @especialidad
+                </td>
+                <td>@s.Especialista</td>
+                <td>@s.Clinica</td>
+                <td>@(s.Estado ? "Activo" : "Inactivo")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-warning btn-sm">?? Editar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
