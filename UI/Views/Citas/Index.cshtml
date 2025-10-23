@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AccesoADatos.Models.Cita>
+@{
+    ViewData["Title"] = "Citas";
+    var servicioId = ViewBag.ServicioId as int?;
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 m-0">Citas</h1>
+    <div class="d-flex gap-2">
+        <form method="get" class="d-flex gap-2">
+            <input name="servicioId" type="number" min="1" class="form-control" value="@servicioId" placeholder="Filtrar por ServicioId" />
+            <button class="btn btn-outline-primary" type="submit">Filtrar</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Limpiar</a>
+        </form>
+        <a class="btn btn-primary" asp-action="Create"><i class="bi bi-plus-circle"></i> Agendar</a>
+    </div>
+</div>
+
+@if (TempData["msg"] is string m)
+{
+    <div class="alert alert-success">@m</div>
+}
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Persona</th>
+                    <th>Identificación</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Fecha nac.</th>
+                    <th>Fecha cita</th>
+                    <th class="text-end">Total</th>
+                    <th style="width:160px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr>
+                        <td>@c.NombreDeLaPersona</td>
+                        <td>@c.Identificacion</td>
+                        <td>@c.Telefono</td>
+                        <td>@c.Correo</td>
+                        <td>@c.FechaNacimiento.ToString("yyyy-MM-dd")</td>
+                        <td>@c.FechaDeLaCita.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td class="text-end">@c.MontoTotal.ToString("C2")</td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@c.Id">Editar</a>
+                                <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@c.Id">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

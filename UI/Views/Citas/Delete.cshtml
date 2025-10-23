@@ -1,0 +1,11 @@
+﻿@model AccesoADatos.Models.Cita
+@{
+	ViewData["Title"] = "Eliminar cita";
+}
+<h1 class="h3 mb-3">Eliminar cita</h1>
+<div class="alert alert-warning">¿Está seguro que desea eliminar la cita de <strong>@Model.NombreDeLaPersona</strong> del @Model.FechaDeLaCita:yyyy-MM-dd HH:mm ?</div>
+<form asp-action="Delete">
+	<input type="hidden" asp-for="Id" />
+	<button class="btn btn-danger" type="submit">Eliminar</button>
+	<a class="btn btn-outline-secondary" asp-action="Index">Cancelar</a>
+</form>

@@ -1,0 +1,63 @@
+﻿@model UI.Models.CitaCreateVm
+@{
+    var servicios = ViewBag.Servicios as IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>
+                    ?? Enumerable.Empty<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
+}
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="NombreDeLaPersona" class="form-label"></label>
+        <input asp-for="NombreDeLaPersona" class="form-control" />
+        <span asp-validation-for="NombreDeLaPersona" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="Identificacion" class="form-label"></label>
+        <input asp-for="Identificacion" class="form-control" />
+        <span asp-validation-for="Identificacion" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="Telefono" class="form-label"></label>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Correo" class="form-label"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="FechaNacimiento" class="form-label"></label>
+        <input asp-for="FechaNacimiento"
+               type="date"
+               class="form-control"
+               min="1900-01-01"
+               asp-format="{0:yyyy-MM-dd}" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="FechaDeLaCita" class="form-label"></label>
+        <input asp-for="FechaDeLaCita"
+               type="datetime-local"
+               class="form-control"
+               min="1900-01-01T00:00"
+               asp-format="{0:yyyy-MM-ddTHH:mm}" />
+        <span asp-validation-for="FechaDeLaCita" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-8">
+        <label asp-for="Direccion" class="form-label"></label>
+        <input asp-for="Direccion" class="form-control" />
+        <span asp-validation-for="Direccion" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="IdServicio" class="form-label">Servicio</label>
+        <select asp-for="IdServicio" asp-items="servicios" class="form-select"></select>
+        <span asp-validation-for="IdServicio" class="text-danger"></span>
+    </div>
+</div>

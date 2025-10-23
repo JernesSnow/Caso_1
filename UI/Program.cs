@@ -18,6 +18,8 @@ builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 builder.Services.AddScoped<IReservaAdminRepository, ReservaAdminRepository>();
 builder.Services.AddScoped<IReservaAdminService, ReservaAdminService>();
+builder.Services.AddScoped<ICitasRepository, CitasRepository>();
+builder.Services.AddScoped<ICitasService, CitasService>();
 
 var app = builder.Build();
 
